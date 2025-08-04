@@ -1,0 +1,10 @@
+/analitycore
+├── docker-compose.yml
+├── java-service/
+│   ├── Dockerfile
+│   ├── pom.xml
+│   └── target/java-service-0.0.1-SNAPSHOT.jar
+└── python-service/
+    ├── Dockerfile
+    ├── app.py
+    └── requirements.txt
