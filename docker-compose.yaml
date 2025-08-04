@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: analitycore
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  java-service:
+    build: ./java-service
+    container_name: java-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/analitycore
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+  python-service:
+    build: ./python-service
+    container_name: python-service
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+      - java-service
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: analitycore
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      ANALYSIS_URL: http://java-service:8080
+
+volumes:
+  postgres_data:
