@@ -1,0 +1,57 @@
+# === MAVEN ===
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
+
+# === SPRING BOOT ===
+*.log
+*.tmp
+
+# === JAVA ===
+*.class
+*.jar
+*.war
+*.ear
+
+# === CONFIGURACIONES SENSIBLES ===
+application-*.properties
+application-*.yml
+*.env
+*.local
+
+# === IDEs ===
+
+# VS Code
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.netbeans/
+
+# === SISTEMA OPERATIVO ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# === BACKUPs / TEMPORALES ===
+*~
+*.bak
+*.swp
+*.tmp

@@ -1,0 +1,13 @@
+java-service/
+├── Dockerfile
+├── pom.xml
+└── src/
+    └── main/
+        ├── java/com/analytiCore/
+        │   ├── JavaServiceApplication.java
+        │   ├── controller/AnalysisController.java
+        │   ├── model/Job.java
+        │   ├── repository/JobRepository.java
+        │   └── service/AnalysisService.java
+        └── resources/
+            └── application.properties
