@@ -1,4 +1,10 @@
 services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - python-service
   db:
     image: postgres:15
     container_name: postgres-db
@@ -38,6 +44,5 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
       ANALYSIS_URL: http://java-service:8080
-
 volumes:
   postgres_data:
