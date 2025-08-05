@@ -24,11 +24,11 @@ services:
     depends_on:
       - java-service
     environment:
-      DB_HOST:     dpg-d28om7vdiees73f6af50-a.oregon-postgres.render.com
+      DB_HOST:     dpg-d292lu2li9vc739em7ig-a
       DB_PORT:     "5432"
-      DB_NAME:     analitycore_jrmo
-      DB_USER:     analitycore
-      DB_PASSWORD: HCu68VFH8YirGUJsSqZ3nQFu2HZEixuJ
+      DB_NAME:     analitycore_c8jd
+      DB_USER:     analitycore_c8jd_user
+      DB_PASSWORD: IIvaYhuEQQ0gG9K9JXykj8bbYhSjTTOw
       ANALYSIS_URL: http://java-service:8080
 
   frontend:
