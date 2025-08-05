@@ -51,7 +51,7 @@ def submit_text():
 
         # Iniciar el análisis enviando el jobId al servicio Java
         logger.info("Enviando solicitud de análisis al servicio Java para el Job ID: %s", job_id)
-        response = requests.post(f"{ANALYSIS_URL}/analyze?jobId={job_id}")
+        response = requests.post(f"{ANALYSIS_URL}/analyze/{job_id}")
         
         # Cambiar el estado a 'COMPLETADO' si el análisis fue exitoso
         if response.status_code == 200:
