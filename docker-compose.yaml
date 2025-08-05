@@ -1,43 +1,42 @@
-services:
-  db:
-    image: postgres:15
-    container_name: postgres-db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: analitycore
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+version: "3.8"
 
+services:
   java-service:
-    build: ./java-service
-    container_name: java-service
+    image: absinchiguano/analyti-java:latest
+    build:
+      context: ./java-service
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    depends_on:
-      - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/analitycore
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_URL:   jdbc:postgresql://dpg-d28om7vdiees73f6af50-a.oregon-postgres.render.com:5432/analitycore_jrmo
+      SPRING_DATASOURCE_USERNAME: analitycore
+      SPRING_DATASOURCE_PASSWORD: HCu68VFH8YirGUJsSqZ3nQFu2HZEixuJ
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
   python-service:
-    build: ./python-service
-    container_name: python-service
+    image: absinchiguano/analyti-python:latest
+    build:
+      context: ./python-service
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     depends_on:
-      - db
       - java-service
     environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_NAME: analitycore
-      DB_USER: postgres
-      DB_PASSWORD: postgres
+      DB_HOST:     dpg-d292lu2li9vc739em7ig-a
+      DB_PORT:     "5432"
+      DB_NAME:     analitycore_c8jd
+      DB_USER:     analitycore_c8jd_user
+      DB_PASSWORD: IIvaYhuEQQ0gG9K9JXykj8bbYhSjTTOw
       ANALYSIS_URL: http://java-service:8080
 
-volumes:
-  postgres_data:
+  frontend:
+    image: absinchiguano/analyti-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - python-service
