@@ -55,3 +55,19 @@ $RECYCLE.BIN/
 *.bak
 *.swp
 *.tmp
+
+# Node.js
+**/node_modules/
+**/build/
+**/dist/
+
+# Entornos de Python
+**/venv/
+**/__pycache__/
+
+# Logs, configuraciones locales, etc.
+*.log
+.env
+.DS_Store
+.idea/
+.vscode/
