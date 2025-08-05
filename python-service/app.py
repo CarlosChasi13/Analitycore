@@ -3,12 +3,14 @@ import psycopg2
 import requests
 import os
 import logging
+from flask_cors import CORS
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
+CORS(app)  # Habilita CORS en todas las rutas y orígenes
 
 # Configuraciones desde variables de entorno (sin defaults inseguros)
 DB_HOST       = os.environ["DB_HOST"]
