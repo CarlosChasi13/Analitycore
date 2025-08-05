@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 CORS(app, origins=["https://analitycore-mj75.onrender.com"])
 
-# Configuraciones desde variables de entorno (sin defaults inseguros)
+# Configuraciones desde variables de entorno 
 DB_HOST       = os.environ["DB_HOST"]
 DB_PORT       = os.environ.get("DB_PORT", "5432")
 DB_NAME       = os.environ["DB_NAME"]
