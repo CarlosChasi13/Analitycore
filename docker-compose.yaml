@@ -9,7 +9,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://analitycore_c8jd_user:IIvaYhuEQQ0gG9K9JXykj8bbYhSjTTOw@dpg-d292lu2li9vc739em7ig-a/analitycore_c8jd
+      SPRING_DATASOURCE_URL: jdbc:postgresql://dpg-d292lu2li9vc739em7ig-a:5432/analitycore_c8jd
       SPRING_DATASOURCE_USERNAME: analitycore_c8jd
       SPRING_DATASOURCE_PASSWORD: IIvaYhuEQQ0gG9K9JXykj8bbYhSjTTOw
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
