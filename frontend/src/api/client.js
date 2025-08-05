@@ -1,5 +1,7 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: '/'  // Nginx en producción hará proxy /api → python-service:5000
+  baseURL: '/api',
+  headers: { 'Content-Type': 'application/json' },
+  timeout: 10000
 });

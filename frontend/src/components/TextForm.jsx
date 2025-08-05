@@ -12,8 +12,12 @@ export default function TextForm({ onResult }) {
     setLoading(true);
 
     try {
-      const { data } = await client.post('/api/submit', { texto: text });
+      // Post to '/api/submit' under the hood, because baseURL is '/api'
+      const { data } = await client.post('/submit', { texto: text });
       onResult(data.resultado);
+    } catch (err) {
+      console.error('Error al enviar texto:', err);
+      // optionally show feedback to user
     } finally {
       setLoading(false);
     }
