@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-CORS(app)  # Habilita CORS en todas las rutas y orígenes
+CORS(app, origins=["https://analitycore-mj75.onrender.com"])
 
 # Configuraciones desde variables de entorno (sin defaults inseguros)
 DB_HOST       = os.environ["DB_HOST"]
