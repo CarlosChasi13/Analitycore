@@ -1,3 +1,4 @@
+// src/components/TextForm.jsx
 import { useState } from 'react';
 import client from '../api/client';
 
@@ -8,23 +9,18 @@ export default function TextForm({ onResult }) {
   const handleSubmit = async e => {
     e.preventDefault();
     if (!text.trim()) return;
-
     setLoading(true);
+
     try {
-      // Enviamos a Python: éste llama a Java y devuelve el objeto completo
       const { data } = await client.post('/api/submit', { texto: text });
-      // data.resultado === { id, texto, estado, sentimiento, palabrasClave }
       onResult(data.resultado);
-    } catch (err) {
-      console.error(err);
-      alert('Error procesando el análisis');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: 20 }}>
+    <form onSubmit={handleSubmit}>
       <textarea
         id="text-input"
         name="text"
@@ -32,7 +28,6 @@ export default function TextForm({ onResult }) {
         value={text}
         onChange={e => setText(e.target.value)}
         placeholder="Escribe el texto a analizar…"
-        style={{ width: '100%', fontSize: 16 }}
       />
       <button type="submit" disabled={loading || !text.trim()}>
         {loading ? 'Procesando…' : 'Enviar al análisis'}

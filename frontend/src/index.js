@@ -1,8 +1,9 @@
+// src/index.js
 import React from 'react';
-import { createRoot } from 'react-dom/client';  // ← OJO: CLIENT
+import { createRoot } from 'react-dom/client';
 import App from './App';
+import './index.css';   // ← aquí
 
 const container = document.getElementById('root');
-// crea el "root" y luego le decimos qué renderizar
 const root = createRoot(container);
 root.render(<App />);

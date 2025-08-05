@@ -1,13 +1,111 @@
-body {
+/* src/index.css */
+
+/* Importa una fuente futurista desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Reset muy ligero */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Fondo oscuro y tipografía cyberpunk */
+body {
+  background: #0a0a0a;
+  color: #00ffea;
+  font-family: 'Orbitron', sans-serif;
+  line-height: 1.4;
+}
+
+/* Contenedor principal centrado */
+.app-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(10,10,10,0.8);
+  border: 1px solid #00ffea;
+  box-shadow: 0 0 20px #00ffea88;
+  border-radius: 8px;
+}
+
+/* Titulares con efecto neón */
+h1, h2 {
+  text-shadow:
+    0 0 5px #00ffea,
+    0 0 10px #00ffea,
+    0 0 20px #ff00c1;
+}
+
+/* Textarea estilo terminal neon */
+textarea {
+  width: 100%;
+  padding: 12px;
+  background: #111;
+  color: #00ffea;
+  border: 2px solid #00ffea;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: 'Courier New', monospace;
+  outline: none;
+  box-shadow: inset 0 0 10px #00ffea55;
+  transition: border-color .2s, box-shadow .2s;
+}
+textarea:focus {
+  border-color: #ff00c1;
+  box-shadow: inset 0 0 15px #ff00c188;
+}
+
+/* Botón neón glitch */
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: transparent;
+  color: #ff00c1;
+  border: 2px solid #ff00c1;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  transition: color .3s, border-color .3s;
+}
+button:before, button:after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: rgba(255,0,193, .2);
+  transform: skewX(-20deg);
+  transition: left .3s;
+}
+button:before { left: -120%; }
+button:after  { left: -120%; }
+button:hover {
+  color: #0a0a0a;
+  border-color: #00ffea;
+}
+button:hover:before { left: 100%; }
+button:hover:after  { left: 100%; }
+
+/* Panel de resultado con efecto glass */
+.status-panel {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(0,0,0,.6);
+  border: 1px solid #00ffea;
+  border-radius: 6px;
+  box-shadow: 0 0 15px #00ffea55;
+}
+.status-panel p, .status-panel pre {
+  margin-bottom: 12px;
+}
+.status-panel pre {
+  background: rgba(0,0,0,.8);
+  border: 1px solid #ff00c1;
+  padding: 10px;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  overflow-x: auto;
 }
